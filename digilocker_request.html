@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>DigiLocker Document Request | Public Services</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link rel="stylesheet" href="public complaint.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>DigiLocker Integration Portal</h1>
+        <p>Request and fetch official documents</p>
+    </header>
+
+    <main>
+        <div class="card">
+            <h2>Request Document</h2>
+
+            <form id="digilockerForm" action="/verify" method="GET">
+
+                <label>Full Name (as per Aadhaar)</label>
+                <div class="input-icon">
+                    <i class="fa fa-user"></i>
+                    <input type="text" name="fullname" placeholder="Enter your full name" required>
+                </div>
+
+                <label>Aadhaar Number</label>
+                <div class="input-icon">
+                    <i class="fa fa-id-card"></i>
+                    <input type="text" name="aadhaar" pattern="[0-9]{12}" placeholder="Enter 12-digit Aadhaar Number"
+                        required>
+                </div>
+
+                <label>Document Type</label>
+                <div class="input-icon">
+                    <i class="fa fa-file-alt"></i>
+                    <select name="doctype" required>
+                        <option value="">Select Document Type</option>
+                        <option value="PANCR">PAN Verification Record</option>
+                        <option value="DRVLC">Driving License</option>
+                        <option value="VEHRG">Vehicle Registration</option>
+                        <option value="RATCR">Ration Card</option>
+                        <option value="SSCE">Class X Marksheet</option>
+                        <option value="HSC">Class XII Marksheet</option>
+                        <option value="DEGREE">Degree/Diploma Certificate</option>
+                    </select>
+                </div>
+
+                <label>Purpose of Request</label>
+                <div class="input-icon textarea-icon">
+                    <i class="fa fa-comment-dots"></i>
+                    <textarea name="purpose" rows="3" placeholder="Briefly state why you need this document..."
+                        required></textarea>
+                </div>
+
+                <div class="consent-notice"
+                    style="margin-top: 20px; font-size: 0.9em; display: flex; align-items: flex-start; gap: 10px;">
+                    <input type="checkbox" id="dpdpConsent" name="dpdpConsent" required
+                        style="width: auto; margin-top: 3px; cursor: pointer;">
+                    <label for="dpdpConsent"
+                        style="margin-top: 0; font-weight: normal; cursor: pointer; line-height: 1.4;">
+                        I consent to the fetching and usage of my documents via DigiLocker for public service delivery,
+                        acknowledging the "Notice and Consent" provisions as mandated by the DPDP Act.
+                    </label>
+                </div>
+
+                <button type="submit">
+                    <i class="fa fa-download"></i> Request from DigiLocker
+                </button>
+            </form>
+
+            <div id="result"></div>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2026 Public Services Oversight Committee</p>
+    </footer>
+
+</body>
+
+</html>
