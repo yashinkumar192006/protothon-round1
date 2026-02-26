@@ -1,0 +1,378 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #FF6B35 0%, #F7931E 50%, #8B5CF6 100%);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: #FFFFFF;
+    border-radius: 24px;
+    box-shadow: 0 25px 50px rgba(255, 107, 53, 0.15);
+    overflow: hidden;
+    border: 1px solid rgba(255, 107, 53, 0.1);
+}
+
+/* ================= HEADER ================= */
+
+.header {
+    background: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%);
+    color: #FFFFFF;
+    padding: 40px;
+    text-align: center;
+    position: relative;
+}
+
+.header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23fff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='3'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;
+}
+
+.header h1 {
+    font-size: 2.5em;
+    font-weight: 700;
+    margin-bottom: 12px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header p {
+    font-size: 1.1em;
+    opacity: 0.95;
+    font-weight: 400;
+}
+
+/* ================= UPLOAD AREA ================= */
+
+.upload-area {
+    padding: 50px 40px;
+}
+
+.upload-zone {
+    border: 3px dashed #e2e8f0;
+    border-radius: 20px;
+    padding: 60px 40px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    background: linear-gradient(145deg, #FEFEFE 0%, #F9FAFB 100%);
+    margin-bottom: 30px;
+}
+
+.upload-zone:hover,
+.upload-zone.dragover {
+    border-color: #FF6B35;
+    background: linear-gradient(145deg, #FFF7ED 0%, #FEF3C7 100%);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(255, 107, 53, 0.15);
+}
+
+.upload-icon {
+    font-size: 4em;
+    margin-bottom: 20px;
+}
+
+.upload-zone h2 {
+    color: #1F2937;
+    font-size: 1.6em;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.upload-zone p {
+    color: #6B7280;
+    font-size: 1.1em;
+}
+
+#fileInput {
+    display: none;
+}
+
+/* ================= FILE LIST ================= */
+
+.file-list {
+    max-height: 300px;
+    overflow-y: auto;
+    margin-bottom: 30px;
+}
+
+.file-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    margin-bottom: 16px;
+    background: linear-gradient(145deg, #FEFEFE 0%, #F9FAFB 100%);
+    border-radius: 16px;
+    border-left: 5px solid #FF6B35;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.file-info {
+    flex: 1;
+}
+
+.file-name {
+    font-weight: 600;
+    color: #1F2937;
+    margin-bottom: 6px;
+    font-size: 1.05em;
+}
+
+.file-size {
+    color: #6B7280;
+    font-size: 0.95em;
+}
+
+.remove-btn {
+    background: linear-gradient(135deg, #EF4444 0%, #F87171 100%);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 0.9em;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 16px rgba(239, 68, 68, 0.3);
+}
+
+.remove-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(239, 68, 68, 0.4);
+}
+
+/* ================= PROGRESS ================= */
+
+.progress-container {
+    margin: 30px 0;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 12px;
+    background: #F3F4F6;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 16px;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #FF6B35, #F7931E, #8B5CF6);
+    width: 0%;
+    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(255, 107, 53, 0.4);
+}
+
+.progress-text {
+    color: #374151;
+    font-weight: 500;
+    font-size: 1.1em;
+}
+
+/* ================= BUTTONS ================= */
+
+.upload-btn {
+    background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+    color: white;
+    border: none;
+    padding: 22px 48px;
+    border-radius: 16px;
+    font-size: 1.2em;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    width: 100%;
+    box-shadow: 0 12px 24px rgba(16, 185, 129, 0.3);
+}
+
+.upload-btn:hover:not(:disabled) {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(16, 185, 129, 0.4);
+}
+
+.upload-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.copy-btn,
+.new-upload {
+    background: linear-gradient(135deg, #8B5CF6 0%, #A78BFA 100%);
+    color: white;
+    border: none;
+    padding: 16px 32px;
+    border-radius: 16px;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 0 12px;
+    box-shadow: 0 12px 24px rgba(139, 92, 246, 0.3);
+}
+
+.copy-btn:hover,
+.new-upload:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 32px rgba(139, 92, 246, 0.4);
+}
+
+/* ================= RESULTS ================= */
+
+.results {
+    padding: 50px 40px;
+    text-align: center;
+}
+
+.results h2 {
+    color: #10B981;
+    font-size: 2.2em;
+    margin-bottom: 30px;
+    font-weight: 700;
+}
+
+.download-link {
+    background: linear-gradient(145deg, #FEFEFE 0%, #F9FAFB 100%);
+    padding: 24px;
+    margin: 20px 0;
+    border-radius: 16px;
+    border-left: 6px solid #10B981;
+    box-shadow: 0 8px 24px rgba(16, 185, 129, 0.1);
+}
+
+.download-link strong {
+    color: #1F2937;
+    font-size: 1.1em;
+    display: block;
+    margin-bottom: 12px;
+}
+
+.download-link a {
+    color: #8B5CF6;
+    text-decoration: none;
+    word-break: break-all;
+    font-family: monospace;
+    font-size: 0.95em;
+    padding: 8px 12px;
+    background: #F3F4F6;
+    border-radius: 8px;
+    display: inline-block;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    .container {
+        border-radius: 20px;
+        margin: 10px;
+    }
+
+    .upload-area,
+    .results {
+        padding: 30px 20px;
+    }
+
+    .upload-zone {
+        padding: 40px 20px;
+    }
+
+    .header {
+        padding: 30px 20px;
+    }
+
+    .header h1 {
+        font-size: 2em;
+    }
+
+    .copy-btn,
+    .new-upload {
+        display: block;
+        margin: 12px auto;
+        max-width: 300px;
+    }
+}
+
+/* ===============================
+   Uploaded Documents Vault Style
+================================= */
+
+.vault-section {
+    padding: 40px;
+    border-top: 1px solid #f1f5f9;
+}
+
+.vault-section h2 {
+    color: #1F2937;
+    margin-bottom: 25px;
+    font-size: 1.8em;
+    font-weight: 700;
+}
+
+#downloadLinks {
+    margin-top: 10px;
+}
+
+.vault-file {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 24px;
+    margin-bottom: 18px;
+    background: linear-gradient(145deg, #FEFEFE 0%, #F9FAFB 100%);
+    border-radius: 18px;
+    border-left: 6px solid #8B5CF6;
+    box-shadow: 0 8px 24px rgba(139, 92, 246, 0.12);
+    transition: all 0.3s ease;
+}
+
+.vault-file:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(139, 92, 246, 0.2);
+}
+
+.vault-file span {
+    font-weight: 600;
+    color: #1F2937;
+    font-size: 1.05em;
+    max-width: 70%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.vault-file a {
+    background: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%);
+    color: #ffffff;
+    text-decoration: none;
+    padding: 10px 22px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 0.95em;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 20px rgba(255, 107, 53, 0.3);
+}
+
+.vault-file a:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(255, 107, 53, 0.4);
+}
