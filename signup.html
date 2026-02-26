@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account - SEVA-CONNECT</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="auth-wrapper">
+        <!-- Left Informational Pane -->
+        <div class="info-pane">
+            <div class="icon-container">
+                <!-- SVG Rocket Icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="currentColor"
+                    stroke="none">
+                    <path
+                        d="M4.535 22.035c-.815.815-2.036-.406-1.22-1.22l2.365-2.365c-2.435-3.053-2.67-7.465-.48-10.375L18.44.406c.4-.407 1.05-.407 1.45 0l3.705 3.704c.4.4.4 1.05 0 1.45l-7.67 7.67c-2.91 2.19-7.322 1.955-10.375-.48l-2.365 2.365zm3.7-11.83a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z" />
+                </svg>
+            </div>
+            <h1 class="info-title">Start Your Journey</h1>
+            <p class="info-desc">
+                Create an account today and take control of your financial future with smart analytics and security.
+            </p>
+        </div>
+
+        <!-- Right Interactive Pane -->
+        <div class="form-pane">
+            <div class="brand-logo">
+                <img src="logo.png" alt="SEVA-CONNECT Logo" style="width: 48px; height: 48px; object-fit: contain;">
+                SEVA-CONNECT
+            </div>
+
+            <div class="form-header">
+                <h2 class="form-title">Create Account</h2>
+                <p class="form-subtitle">Get started with your free account today.</p>
+            </div>
+
+            <form action="profile-setup.html" method="GET">
+                <div class="input-group">
+                    <label class="input-label" for="email">Email</label>
+                    <input type="email" id="email" class="input-field" placeholder="name@company.com" required />
+                </div>
+
+                <div class="input-group">
+                    <label class="input-label" for="password">Password</label>
+                    <input type="password" id="password" class="input-field" placeholder="Create a strong password"
+                        required />
+                </div>
+
+                <button type="submit" class="btn-primary">Sign Up</button>
+            </form>
+
+            <div class="auth-switch">
+                Already have an account? <a href="profile2.html" class="auth-link">Log In</a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

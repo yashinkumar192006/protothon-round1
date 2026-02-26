@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - SEVA-CONNECT</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <div class="auth-wrapper">
+    <!-- Left Informational Pane -->
+    <div class="info-pane">
+      <div class="icon-container">
+        <!-- SVG Icon matching the chart/graph from screenshot 1 -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+        </svg>
+      </div>
+      <h1 class="info-title">Welcome to SEVA-CONNECT</h1>
+      <p class="info-desc">
+      </p>
+    </div>
+
+    <!-- Right Interactive Pane -->
+    <div class="form-pane">
+      <div class="brand-logo">
+        <img src="logo.png" alt="SEVA-CONNECT Logo" style="width: 48px; height: 48px; object-fit: contain;">
+        SEVA-CONNECT
+      </div>
+
+      <div class="form-header">
+        <h2 class="form-title">Login</h2>
+        <p class="form-subtitle">Welcome back! Please enter your details.</p>
+      </div>
+
+      <form action="profile-setup.html" method="GET" id="loginForm">
+        <div class="input-group">
+          <label class="input-label" for="email">Email</label>
+          <input type="email" id="email" class="input-field" placeholder="Enter your email" required />
+        </div>
+
+        <div class="input-group">
+          <label class="input-label" for="password">Password</label>
+          <input type="password" id="password" class="input-field" placeholder="••••••••" required />
+        </div>
+
+        <button type="submit" class="btn-primary">Login</button>
+      </form>
+
+      <div class="auth-switch">
+        Don't have an account? <a href="signup.html" class="auth-link">Sign Up</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Prevent default form submission to just showcase the UI linking
+    document.getElementById('loginForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      // Normally this would log the user in, for demo purposes we can just alert or redirect
+      // Assuming successful login goes to dashboard, but user asked to show profile-setup for new users.
+      alert('Login clicked. This is a demo.');
+    });
+  </script>
+</body>
+
+</html>
