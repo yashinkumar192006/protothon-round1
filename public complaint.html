@@ -2,93 +2,83 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Public Services Complaint Portal</title>
+    <title>Submit Complaint | Public Services</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <header>
     <h1>Public Services Complaint Portal</h1>
-    <p>Report issues. Track progress. Improve service delivery.</p>
+    <p>Submit your complaint</p>
 </header>
 
 <main>
-
-    <!-- COMPLAINT FORM -->
-    <form id="complaintForm" class="card">
+    <div class="card">
         <h2>Submit a Complaint</h2>
 
-        <label>
-            <input type="checkbox" id="anonymous"> Submit Anonymously
-        </label>
+        <form id="complaintForm">
 
-        <div id="userInfo">
             <label>Full Name</label>
-            <input type="text" id="name">
+            <div class="input-icon">
+                <i class="fa fa-user"></i>
+                <input type="text" placeholder="Enter your full name" required>
+            </div>
 
             <label>Email Address</label>
-            <input type="email" id="email">
-        </div>
+            <div class="input-icon">
+                <i class="fa fa-envelope"></i>
+                <input type="email" placeholder="Enter your email" required>
+            </div>
 
-        <label>Service</label>
-        <select id="service" required>
-            <option value="">Select Service</option>
-            <option>Water Supply</option>
-            <option>Electricity</option>
-            <option>Healthcare</option>
-            <option>Roads & Transport</option>
-            <option>Education</option>
-            <option>Waste Management</option>
-        </select>
+            <label>Service</label>
+            <div class="input-icon">
+                <i class="fa fa-tools"></i>
+                <select required>
+                    <option value="">Select Service</option>
+                    <option>Water Supply</option>
+                    <option>Electricity</option>
+                    <option>Healthcare</option>
+                    <option>Roads & Transport</option>
+                    <option>Education</option>
+                    <option>Waste Management</option>
+                </select>
+            </div>
 
-        <label>Department</label>
-        <select id="department" required>
-            <option value="">Select Department</option>
-            <option>Water Authority</option>
-            <option>Electricity Board</option>
-            <option>Health Department</option>
-            <option>Transport Department</option>
-            <option>Local Government Council</option>
-        </select>
+            <label>Priority Level</label>
+            <div class="input-icon">
+                <i class="fa fa-exclamation-circle"></i>
+                <select required>
+                    <option>Low</option>
+                    <option>Medium</option>
+                    <option>High</option>
+                    <option>Emergency</option>
+                </select>
+            </div>
 
-        <label>Priority Level</label>
-        <select id="priority" required>
-            <option value="">Select Priority</option>
-            <option>Low</option>
-            <option>Medium</option>
-            <option>High</option>
-            <option>Emergency</option>
-        </select>
+            <label>Complaint Details</label>
+            <div class="input-icon textarea-icon">
+                <i class="fa fa-comment-dots"></i>
+                <textarea rows="5" placeholder="Describe the issue..." required></textarea>
+            </div>
 
-        <label>Location (City / Area)</label>
-        <input type="text" id="location" required>
+            <button type="submit">
+                <i class="fa fa-paper-plane"></i> Submit Complaint
+            </button>
+        </form>
 
-        <label>Complaint Details</label>
-        <textarea id="details" rows="5" required></textarea>
-
-        <label>Upload Evidence (optional)</label>
-        <input type="file">
-
-        <button type="submit">Submit Complaint</button>
-
-        <div id="trackingResult"></div>
-    </form>
-
-    <!-- TRACK COMPLAINT -->
-    <section class="card">
-        <h2>Track Your Complaint</h2>
-        <input type="text" id="trackInput" placeholder="Enter Tracking Number">
-        <button onclick="trackComplaint()">Check Status</button>
-        <p id="statusResult"></p>
-    </section>
-
+        <div id="result"></div>
+    </div>
 </main>
 
 <footer>
     <p>© 2026 Public Services Oversight Committee</p>
 </footer>
 
-<script src="script.js"></script>
+<script src="submit.js"></script>
 </body>
 </html>
