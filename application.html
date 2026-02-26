@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Govt Services Document App</title>
+    <!-- Updated to match your CSS filename -->
+    <link rel="stylesheet" href="application.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🏛️ Govt Services Document Portal</h1>
+            <p>Select your service and upload documents easily from phone/laptop</p>
+        </div>
+
+        <div id="step1" class="step active">
+            <h2>📂 Select Domain</h2>
+            <div class="domain-grid" id="domains"></div>
+        </div>
+
+        <div id="step2" class="step">
+            <h2>📋 Select Specific Service</h2>
+            <button class="btn back-btn" onclick="goBack(1)">← Back</button>
+            <div class="service-grid" id="services"></div>
+        </div>
+
+        <div id="step3" class="step">
+            <h2>📤 Upload Documents</h2>
+            <button class="btn back-btn" onclick="goBack(2)">← Back</button>
+            <div class="upload-section" id="upload-section"></div>
+            <div class="progress-bar"><div class="progress" id="progress"></div></div>
+            <button class="btn submit-btn" onclick="submitApplication()">✅ Submit Application</button>
+        </div>
+    </div>
+
+    <!-- Updated to match your JS filename -->
+    <script src="application.js"></script>
+</body>
+</html>

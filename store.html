@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Vault - Secure Storage</title>
+    <link rel="stylesheet" href="store.css">
+</head>
+<body>
+
+    <div class="container">
+
+        <header class="header">
+            <h1>📁 Document Vault</h1>
+            <p>Securely upload & store documents</p>
+        </header>
+
+        <!-- Upload Section -->
+        <div class="upload-area" id="uploadArea">
+
+            <div class="upload-zone" id="dropZone">
+                <div class="upload-icon">📎</div>
+                <h2>Drop files here or click to browse</h2>
+                <p>PDF, Images • Max 10MB each</p>
+                <input type="file" id="fileInput" multiple accept=".pdf,image/*" hidden />
+            </div>
+
+            <div class="file-list" id="fileList"></div>
+
+            <div class="progress-container" id="progressContainer" style="display:none;">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <span class="progress-text" id="progressText">0%</span>
+            </div>
+
+            <button class="upload-btn" id="uploadBtn" disabled>
+                🚀 Upload All Files
+            </button>
+
+        </div>
+
+        <!-- Uploaded Files Section -->
+        <div class="vault-section">
+            <h2>📂 Uploaded Documents</h2>
+            <div id="downloadLinks"></div>
+        </div>
+
+    </div>
+
+    <script src="store.js"></script>
+
+</body>
+</html>
