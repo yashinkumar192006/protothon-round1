@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Submit Complaint | Public Services</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>Public Services Complaint Portal</h1>
+    <p>Submit your complaint</p>
+</header>
+
+<main>
+    <div class="card">
+        <h2>Submit a Complaint</h2>
+
+        <form id="complaintForm">
+
+            <label>Full Name</label>
+            <div class="input-icon">
+                <i class="fa fa-user"></i>
+                <input type="text" placeholder="Enter your full name" required>
+            </div>
+
+            <label>Email Address</label>
+            <div class="input-icon">
+                <i class="fa fa-envelope"></i>
+                <input type="email" placeholder="Enter your email" required>
+            </div>
+
+            <label>Service</label>
+            <div class="input-icon">
+                <i class="fa fa-tools"></i>
+                <select required>
+                    <option value="">Select Service</option>
+                    <option>Water Supply</option>
+                    <option>Electricity</option>
+                    <option>Healthcare</option>
+                    <option>Roads & Transport</option>
+                    <option>Education</option>
+                    <option>Waste Management</option>
+                </select>
+            </div>
+
+            <label>Priority Level</label>
+            <div class="input-icon">
+                <i class="fa fa-exclamation-circle"></i>
+                <select required>
+                    <option>Low</option>
+                    <option>Medium</option>
+                    <option>High</option>
+                    <option>Emergency</option>
+                </select>
+            </div>
+
+            <label>Complaint Details</label>
+            <div class="input-icon textarea-icon">
+                <i class="fa fa-comment-dots"></i>
+                <textarea rows="5" placeholder="Describe the issue..." required></textarea>
+            </div>
+
+            <button type="submit">
+                <i class="fa fa-paper-plane"></i> Submit Complaint
+            </button>
+        </form>
+
+        <div id="result"></div>
+    </div>
+</main>
+
+<footer>
+    <p>© 2026 Public Services Oversight Committee</p>
+</footer>
+
+<script src="submit.js"></script>
+</body>
+</html>
