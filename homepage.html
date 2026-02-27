@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Government Public Services Portal</title>
+    <title>SEVA-CONNECT Portal</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Font Awesome -->
@@ -18,8 +18,8 @@
         <div class="top-bar">
 
             <h1 class="brand">
-                <img src="main_logo.png" alt="Government Logo">
-                Government Public Services
+                <img src="main_logo.png" alt="SEVA-CONNECT Logo">
+                SEVA-CONNECT
             </h1>
 
             <div class="account" id="accountBtn">
@@ -33,6 +33,16 @@
 
         <!-- SIDEBAR -->
         <aside class="sidebar">
+            <a href="homepage.html">
+                <i class="fa fa-home"></i>
+                Home
+            </a>
+
+            <a href="departments.html">
+                <i class="fa fa-building"></i>
+                Departments
+            </a>
+
             <a href="public complaint.html">
                 <i class="fa fa-paper-plane"></i>
                 Submit Complaint
@@ -65,49 +75,63 @@
             <section class="hero">
                 <h2>Serving Citizens with Transparency & Accountability</h2>
                 <p>
-                    Welcome to the official Government Public Services Portal.
+                    Welcome to the official SEVA-CONNECT Portal.
                     Access essential services and ensure transparency through our
                     digital accountability system.
                 </p>
             </section>
-
             <section class="services">
-                <h2>Key Public Services</h2>
-
                 <div class="service-grid">
 
-                    <div class="service-card">
-                        <i class="fa fa-tint"></i>
-                        <h3>Water Supply</h3>
-                        <p>Clean and safe water distribution services.</p>
-                    </div>
+                    <a href="departments.html" class="service-card"
+                        style="text-decoration: none; color: inherit; display: block;">
+                        <i class="fa fa-building"></i>
+                        <h3>Departments</h3>
+                        <p>Explore different government departments.</p>
+                    </a>
 
-                    <div class="service-card">
-                        <i class="fa fa-bolt"></i>
-                        <h3>Electricity</h3>
-                        <p>Reliable power supply and maintenance.</p>
-                    </div>
+                    <a href="public complaint.html" class="service-card"
+                        style="text-decoration: none; color: inherit; display: block;">
+                        <i class="fa fa-paper-plane"></i>
+                        <h3>Submit Complaint</h3>
+                        <p>File a new complaint or issue locally.</p>
+                    </a>
 
-                    <div class="service-card">
-                        <i class="fa fa-hospital"></i>
-                        <h3>Healthcare</h3>
-                        <p>Public health facilities and emergency care.</p>
-                    </div>
+                    <a href="track.html" class="service-card"
+                        style="text-decoration: none; color: inherit; display: block;">
+                        <i class="fa fa-search"></i>
+                        <h3>Track Complaint</h3>
+                        <p>Check the progress of your complaints.</p>
+                    </a>
 
-                    <div class="service-card">
-                        <i class="fa fa-road"></i>
-                        <h3>Transport</h3>
-                        <p>Infrastructure development and road services.</p>
-                    </div>
+                    <a href="application.html" class="service-card"
+                        style="text-decoration: none; color: inherit; display: block;">
+                        <i class="fa fa-clipboard-list"></i>
+                        <h3>Apply for Services</h3>
+                        <p>Submit applications for public services.</p>
+                    </a>
+
+                    <a href="store.html" class="service-card"
+                        style="text-decoration: none; color: inherit; display: block;">
+                        <i class="fa fa-folder-open"></i>
+                        <h3>Store Document</h3>
+                        <p>Securely save and retrieve documents.</p>
+                    </a>
+
+                    <a href="digilocker_request.html" class="service-card"
+                        style="text-decoration: none; color: inherit; display: block;">
+                        <i class="fa fa-lock"></i>
+                        <h3>DigiLocker</h3>
+                        <p>Access your authentic digital documents.</p>
+                    </a>
 
                 </div>
             </section>
-
         </main>
     </div>
 
     <footer>
-        © 2026 Government Public Services Department
+        © 2026 SEVA-CONNECT
     </footer>
 
     <script src="homepage.js"></script>

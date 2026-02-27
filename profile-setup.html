@@ -25,7 +25,8 @@
             </div>
             <h1 class="info-title">Tell Us About Yourself</h1>
             <p class="info-desc">
-                To provide you with the best financial advice, we need to know a bit more about your current situation.
+                To provide you with the best public services, we need some basic details to set up your profile and
+                assist you efficiently.
             </p>
         </div>
 
@@ -54,34 +55,22 @@
                     </div>
 
                     <div class="input-group">
-                        <label class="input-label" for="jobTitle">Job Title / Business</label>
-                        <input type="text" id="jobTitle" class="input-field" placeholder="Software Engineer" required />
+                        <label class="input-label" for="mobileNumber">Mobile Number</label>
+                        <input type="tel" id="mobileNumber" class="input-field" placeholder="+91 9876543210" required />
                     </div>
 
                     <div class="input-group">
-                        <label class="input-label" for="company">Company</label>
-                        <input type="text" id="company" class="input-field" placeholder="Tech Corp" required />
+                        <label class="input-label" for="dob">Date of Birth</label>
+                        <input type="date" id="dob" class="input-field" required />
                     </div>
 
                     <div class="input-group">
-                        <label class="input-label" for="salary">Monthly Salary (₹)</label>
-                        <input type="number" id="salary" class="input-field" placeholder="5000" />
+                        <label class="input-label" for="age">Age</label>
+                        <input type="number" id="age" class="input-field" placeholder="Auto-calculated" readonly
+                            style="background-color: #f3f4f6; cursor: not-allowed;" required />
                     </div>
 
-                    <div class="input-group">
-                        <label class="input-label" for="otherIncome">Other Income (₹)</label>
-                        <input type="number" id="otherIncome" class="input-field" placeholder="0" />
-                    </div>
 
-                    <div class="input-group">
-                        <label class="input-label" for="savings">Total Savings (₹)</label>
-                        <input type="number" id="savings" class="input-field" placeholder="10000" />
-                    </div>
-
-                    <div class="input-group">
-                        <label class="input-label" for="expenses">Monthly Expenses (₹)</label>
-                        <input type="number" id="expenses" class="input-field" placeholder="2000" />
-                    </div>
                 </div>
 
                 <button type="submit" class="btn-primary" style="margin-top: 0;">Complete Profile</button>
@@ -90,6 +79,22 @@
     </div>
 
     <script>
+        // Automatically calculate age based on Date of Birth
+        document.getElementById('dob').addEventListener('change', function () {
+            const dob = new Date(this.value);
+            if (!isNaN(dob.getTime())) {
+                const today = new Date();
+                let age = today.getFullYear() - dob.getFullYear();
+                const m = today.getMonth() - dob.getMonth();
+                if (m < 0 || (m === 0 && today.getDate() < dob.getDate())) {
+                    age--;
+                }
+                document.getElementById('age').value = age >= 0 ? age : 0;
+            } else {
+                document.getElementById('age').value = '';
+            }
+        });
+
         document.getElementById('profileForm').addEventListener('submit', function (e) {
             e.preventDefault();
             alert('Profile Setup Complete! Redirecting to Homepage...');
