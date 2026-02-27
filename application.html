@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,9 +8,14 @@
     <!-- Updated to match your CSS filename -->
     <link rel="stylesheet" href="application.css">
 </head>
+
 <body>
     <div class="container">
         <div class="header">
+            <div class="brand-logo" style="text-align: center; margin-bottom: 10px;">
+                <img src="logo.png" alt="Logo"
+                    style="width: 64px; height: 64px; object-fit: contain; border-radius: 50%;">
+            </div>
             <h1>🏛️ Govt Services Document Portal</h1>
             <p>Select your service and upload documents easily from phone/laptop</p>
         </div>
@@ -29,7 +35,9 @@
             <h2>📤 Upload Documents</h2>
             <button class="btn back-btn" onclick="goBack(2)">← Back</button>
             <div class="upload-section" id="upload-section"></div>
-            <div class="progress-bar"><div class="progress" id="progress"></div></div>
+            <div class="progress-bar">
+                <div class="progress" id="progress"></div>
+            </div>
             <button class="btn submit-btn" onclick="submitApplication()">✅ Submit Application</button>
         </div>
     </div>
@@ -37,4 +45,5 @@
     <!-- Updated to match your JS filename -->
     <script src="application.js"></script>
 </body>
+
 </html>

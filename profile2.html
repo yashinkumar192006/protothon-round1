@@ -27,7 +27,7 @@
     <!-- Right Interactive Pane -->
     <div class="form-pane">
       <div class="brand-logo">
-        <img src="logo.png" alt="SEVA-CONNECT Logo" style="width: 48px; height: 48px; object-fit: contain;">
+        <img src="main_logo.png" alt="SEVA-CONNECT Logo" style="width: 48px; height: 48px; object-fit: contain;">
         SEVA-CONNECT
       </div>
 
@@ -61,8 +61,8 @@
     document.getElementById('loginForm').addEventListener('submit', function (e) {
       e.preventDefault();
       // Normally this would log the user in, for demo purposes we can just alert or redirect
-      // Assuming successful login goes to dashboard, but user asked to show profile-setup for new users.
-      alert('Login clicked. This is a demo.');
+      alert('Login successful! Redirecting to Homepage...');
+      window.location.href = 'homepage.html';
     });
   </script>
 </body>

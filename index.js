@@ -1,7 +1,7 @@
 const express = require('express');
 const axios = require('axios');
 const path = require('path');
-require('dotenv').config();
+require('dotenv').config({ path: 'process.env' });
 
 const app = express();
 app.use(express.static(__dirname));
@@ -26,17 +26,18 @@ app.get('/verify', async (req, res) => {
             headers: { 'x-client-id': CLIENT_ID, 'x-client-secret': CLIENT_SECRET }
         });
         // The 'id' in this response is your Request ID
-        res.redirect(response.data.url); 
+        res.redirect(response.data.url);
     } catch (error) {
-        console.error("Initiate Error:", error.response ? error.response.data : error.message);
-        res.status(500).send("Could not connect to DigiLocker. Check .env values.");
+        const errData = error.response ? JSON.stringify(error.response.data) : error.message;
+        console.error("Initiate Error:", errData);
+        res.status(500).send(`Could not connect to DigiLocker. Error details: <br><br> ${errData}`);
     }
 });
 
 // STEP 2: Handle the Return & Fetch Data
 app.get('/callback', async (req, res) => {
     const requestId = req.query.id; // Request ID from URL query string
-    
+
     try {
         // Fetching verified Aadhaar data
         const response = await axios.get(`${SETU_BASE_URL}/api/digilocker/${requestId}/aadhaar`, {
@@ -44,7 +45,7 @@ app.get('/callback', async (req, res) => {
         });
 
         const rawData = response.data;
-        
+
         // DPDP COMPLIANCE: Masking Aadhaar for privacy
         const maskedAadhaar = rawData.aadhaar_number.replace(/\d(?=\d{4})/g, "X");
 
