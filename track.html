@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Track Complaint | Public Services</title>
+    <title>Track Services | Public Services</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Font Awesome -->
@@ -21,24 +21,64 @@
         <div class="brand-logo" style="text-align: center; margin-bottom: 10px;">
             <img src="logo.png" alt="Logo" style="width: 64px; height: 64px; object-fit: contain; border-radius: 50%;">
         </div>
-        <h1>Track Your Complaint</h1>
-        <p>Check complaint status</p>
+        <h1>Track Services</h1>
+        <p>Track your complaints and applications</p>
     </header>
 
     <main>
-        <div class="card">
+        <div style="display: flex; gap: 1rem; margin-bottom: 2rem;">
+            <div id="tab-complaint" onclick="switchTab('complaint')"
+                style="flex: 1; text-align: center; padding: 1.5rem; background: linear-gradient(135deg, #ff8c00, #6a0dad); color: white; border-radius: 12px; cursor: pointer; font-weight: bold; font-size: 1.2rem; border: 2px solid #ff8c00; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.2s;">
+                <i class="fa fa-exclamation-circle" style="font-size: 2rem; display: block; margin-bottom: 10px;"></i>
+                Track Your Complaint
+            </div>
+            <div id="tab-application" onclick="switchTab('application')"
+                style="flex: 1; text-align: center; padding: 1.5rem; background: #e0e0e0; color: #555; border-radius: 12px; cursor: pointer; font-weight: bold; font-size: 1.2rem; border: 2px solid transparent; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.2s;">
+                <i class="fa fa-file-alt" style="font-size: 2rem; display: block; margin-bottom: 10px;"></i>
+                Track Your Application
+            </div>
+        </div>
+
+        <div class="card" id="section-complaint">
             <h2>Track Complaint</h2>
 
             <div class="input-icon">
                 <i class="fa fa-hashtag"></i>
-                <input type="text" id="trackInput" placeholder="Enter Tracking Number">
+                <input type="text" id="trackInput" placeholder="">
             </div>
 
             <button onclick="trackComplaint()">
                 <i class="fa fa-search"></i> Check Status
             </button>
 
-            <p id="statusResult"></p>
+            <p id="statusResult" style="margin-top: 1rem; font-size: 1.1rem; text-align: center;"></p>
+
+            <div id="recentComplaintsContainer"
+                style="margin-top: 2rem; border-top: 1px solid rgba(255,255,255,0.3); padding-top: 1rem; display: none;">
+                <h3 style="text-align: center; margin-bottom: 1rem;">Your Registered Complaints</h3>
+                <div id="recentComplaintsList" style="display: flex; flex-direction: column; gap: 0.5rem;"></div>
+            </div>
+        </div>
+
+        <div class="card" id="section-application" style="display: none;">
+            <h2>Track Application</h2>
+
+            <div class="input-icon">
+                <i class="fa fa-id-card"></i>
+                <input type="text" id="appInput" placeholder="Enter Application Reference ID">
+            </div>
+
+            <button onclick="trackApplication()">
+                <i class="fa fa-search"></i> Check Status
+            </button>
+
+            <p id="appStatusResult" style="margin-top: 1rem; font-size: 1.1rem; text-align: center;"></p>
+
+            <div id="recentApplicationsContainer"
+                style="margin-top: 2rem; border-top: 1px solid rgba(255,255,255,0.3); padding-top: 1rem; display: none;">
+                <h3 style="text-align: center; margin-bottom: 1rem;">Your Applications</h3>
+                <div id="recentApplicationsList" style="display: flex; flex-direction: column; gap: 0.5rem;"></div>
+            </div>
         </div>
     </main>
 

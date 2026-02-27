@@ -51,7 +51,7 @@ let currentService = null;
 let fileInputs = [];
 
 // Initialize app
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     initDomains();
 });
 
@@ -98,7 +98,7 @@ function populateDocuments(docs) {
     const section = document.getElementById('upload-section');
     section.innerHTML = `<h3>${currentService.name}</h3><p>Upload the following documents:</p>`;
     fileInputs = [];
-    
+
     docs.forEach((doc, index) => {
         const group = document.createElement('div');
         group.className = 'upload-group';
@@ -158,8 +158,29 @@ function goBack(step) {
 function submitApplication() {
     const filledCount = fileInputs.filter(input => input.files.length > 0).length;
     if (filledCount === fileInputs.length && fileInputs.length > 0) {
-        alert(`✅ Application for ${currentService.name} submitted successfully!
-All ${filledCount} documents uploaded.`);
+        const year = new Date().getFullYear();
+        const trackingNumber = "APP-" + year + "-" + Math.floor(100000 + Math.random() * 900000);
+
+        const applications = JSON.parse(localStorage.getItem("applications")) || {};
+        applications[trackingNumber] = {
+            status: "Application Submitted",
+            service: currentService.name
+        };
+        localStorage.setItem("applications", JSON.stringify(applications));
+
+        document.getElementById('result').innerHTML = `
+            <div style="background: rgba(255,255,255,0.95); padding: 1.5rem; border-radius: 8px; color: #4b006e; border: 2px solid green; margin-top: 2rem;">
+                <h3 style="color: green; margin-bottom: 1rem;">✅ Application Submitted Successfully</h3>
+                <p>For: <strong>${currentService.name}</strong></p>
+                <p style="margin-top: 1rem;">Your Reference ID:</p>
+                <strong style="font-size: 1.4rem; color: #ff8c00;">${trackingNumber}</strong>
+                <p style="margin-top: 1rem;">Use this number to track your application.</p>
+                <a href="track.html" style="display: inline-block; margin-top: 1rem; padding: 0.8rem 1.5rem; background-color: #007bff; color: white; text-decoration: none; border-radius: 6px; font-weight: bold;">Track Application</a>
+            </div>
+        `;
+
+        // Hide submit button to prevent duplicate submissions
+        document.querySelector('.submit-btn').style.display = 'none';
     } else {
         alert(`⚠️ Please upload all ${fileInputs.length} required documents first.
 Currently uploaded: ${filledCount}`);
