@@ -64,10 +64,16 @@
                     </select>
                 </div>
 
-                <label>Complaint Details</label>
+                <label style="display: flex; justify-content: space-between; align-items: center;">
+                    Complaint Details
+                    <button type="button" id="voiceBtn"
+                        style="width: auto; margin: 0; padding: 0.4rem 0.8rem; background-color: #ffcf99; color: #6a0dad; font-size: 0.9rem; border-radius: 4px;">
+                        <i class="fa fa-microphone"></i> AI Voice Assist
+                    </button>
+                </label>
                 <div class="input-icon textarea-icon">
                     <i class="fa fa-comment-dots"></i>
-                    <textarea rows="5" placeholder="Describe the issue..." required></textarea>
+                    <textarea id="complaintText" rows="5" placeholder="Describe the issue..." required></textarea>
                 </div>
 
                 <button type="submit">
