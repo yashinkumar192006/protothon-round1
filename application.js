@@ -158,31 +158,102 @@ function goBack(step) {
 function submitApplication() {
     const filledCount = fileInputs.filter(input => input.files.length > 0).length;
     if (filledCount === fileInputs.length && fileInputs.length > 0) {
-        const year = new Date().getFullYear();
-        const trackingNumber = "APP-" + year + "-" + Math.floor(100000 + Math.random() * 900000);
-
-        const applications = JSON.parse(localStorage.getItem("applications")) || {};
-        applications[trackingNumber] = {
-            status: "Application Submitted",
-            service: currentService.name
-        };
-        localStorage.setItem("applications", JSON.stringify(applications));
-
-        document.getElementById('result').innerHTML = `
-            <div style="background: rgba(255,255,255,0.95); padding: 1.5rem; border-radius: 8px; color: #4b006e; border: 2px solid green; margin-top: 2rem;">
-                <h3 style="color: green; margin-bottom: 1rem;">✅ Application Submitted Successfully</h3>
-                <p>For: <strong>${currentService.name}</strong></p>
-                <p style="margin-top: 1rem;">Your Reference ID:</p>
-                <strong style="font-size: 1.4rem; color: #ff8c00;">${trackingNumber}</strong>
-                <p style="margin-top: 1rem;">Use this number to track your application.</p>
-                <a href="track.html" style="display: inline-block; margin-top: 1rem; padding: 0.8rem 1.5rem; background-color: #007bff; color: white; text-decoration: none; border-radius: 6px; font-weight: bold;">Track Application</a>
-            </div>
-        `;
 
         // Hide submit button to prevent duplicate submissions
         document.querySelector('.submit-btn').style.display = 'none';
+
+        const resultDiv = document.getElementById('result');
+
+        // Show AI Verification starting
+        resultDiv.innerHTML = `
+            <div style="background: rgba(255,255,255,0.95); padding: 1.5rem; border-radius: 8px; color: #4b006e; border: 2px solid #ff8c00; margin-top: 2rem;">
+                <h3 style="color: #ff8c00; margin-bottom: 1rem;"><i class="fa fa-robot fa-spin"></i> AI Validating Documents...</h3>
+                <p>Please wait while our AI system verifies your uploaded documents...</p>
+                <div style="width: 100%; height: 8px; background-color: #eee; border-radius: 4px; margin-top: 10px; overflow: hidden;">
+                    <div id="ai-progress" style="width: 0%; height: 100%; background: linear-gradient(90deg, #ff8c00, #6a0dad); transition: width 0.5s;"></div>
+                </div>
+            </div>
+        `;
+
+        // Simulate progress
+        let progress = 0;
+        const progressInterval = setInterval(() => {
+            progress += Math.random() * 20 + 10;
+            if (progress > 100) progress = 100;
+            document.getElementById('ai-progress').style.width = progress + "%";
+
+            if (progress >= 100) {
+                clearInterval(progressInterval);
+                setTimeout(finalizeApplication, 500);
+            }
+        }, 500);
+
     } else {
-        alert(`⚠️ Please upload all ${fileInputs.length} required documents first.
-Currently uploaded: ${filledCount}`);
+        alert(`⚠️ Please upload all ${fileInputs.length} required documents first.\nCurrently uploaded: ${filledCount}`);
     }
+}
+
+function finalizeApplication() {
+    const year = new Date().getFullYear();
+    const trackingNumber = "APP-" + year + "-" + Math.floor(100000 + Math.random() * 900000);
+
+    const applications = JSON.parse(localStorage.getItem("applications")) || {};
+    applications[trackingNumber] = {
+        status: "Approved", // Set to Approved to simulate the AI verified it immediately
+        service: currentService.name
+    };
+    localStorage.setItem("applications", JSON.stringify(applications));
+
+    // Generate soft copy mock visual depending on the service name.
+    const softcopyHtml = generateSoftcopyHtml(currentService.name);
+
+    document.getElementById('result').innerHTML = `
+        <div style="background: rgba(255,255,255,0.95); padding: 1.5rem; border-radius: 8px; color: #4b006e; border: 2px solid green; margin-top: 2rem; margin-bottom: 2rem;">
+            <h3 style="color: green; margin-bottom: 1rem;"><i class="fa fa-check-circle"></i> Verification Complete</h3>
+            <p>Your documents have been successfully verified by our AI system. Your application for <strong>${currentService.name}</strong> is completely processed and approved!</p>
+            <p style="margin-top: 1rem;">Tracking ID: <strong style="color: #ff8c00;">${trackingNumber}</strong></p>
+            
+            <div style="margin-top: 20px;">
+                <h4 style="margin-bottom: 15px; color: #333;">Your Auto-Generated Softcopy:</h4>
+                ${softcopyHtml}
+            </div>
+
+            <a href="track.html" style="display: inline-block; margin-top: 2rem; padding: 0.8rem 1.5rem; background-color: #007bff; color: white; text-decoration: none; border-radius: 6px; font-weight: bold;">Track in Dashboard</a>
+        </div>
+    `;
+}
+
+function generateSoftcopyHtml(serviceName) {
+    const dateStr = new Date().toLocaleDateString();
+
+    let icon = "fa-id-card";
+    if (serviceName.toLowerCase().includes("driving") || serviceName.toLowerCase().includes("license")) icon = "fa-id-badge";
+    if (serviceName.toLowerCase().includes("passport")) icon = "fa-passport";
+    if (serviceName.toLowerCase().includes("certificate")) icon = "fa-certificate";
+
+    return `
+        <div style="border: 2px solid #ccc; border-radius: 10px; padding: 20px; background: linear-gradient(135deg, #f9f9f9, #eef1f5); position: relative; max-width: 420px; margin: 0 auto; box-shadow: 0 4px 10px rgba(0,0,0,0.15); text-align: left;">
+            <div style="text-align: center; border-bottom: 2px solid #ddd; padding-bottom: 10px; margin-bottom: 15px;">
+                <i class="fa fa-university" style="font-size: 1.5rem; color: #6a0dad; vertical-align: middle;"></i>
+                <strong style="font-size: 1.1rem; vertical-align: middle; color: #333; margin-left: 10px;">GOVERNMENT OF INDIA</strong>
+            </div>
+            <div style="display: flex; gap: 15px; align-items: center;">
+                <div style="width: 80px; height: 100px; background-color: #ddd; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: #777; border: 1px dashed #aaa;">
+                    <i class="fa fa-user" style="font-size: 2.5rem;"></i>
+                </div>
+                <div style="flex-grow: 1;">
+                    <h3 style="margin: 0; color: #0056b3; font-size: 1.1rem;">E-${serviceName.toUpperCase()}</h3>
+                    <p style="margin: 8px 0 0 0; font-size: 0.85rem; color: #444;"><strong>Holder Name:</strong> Verified Citizen</p>
+                    <p style="margin: 4px 0 0 0; font-size: 0.85rem; color: #444;"><strong>Issued Date:</strong> ${dateStr}</p>
+                    <p style="margin: 4px 0 0 0; font-size: 0.85rem; color: green; font-weight: bold;"><i class="fa fa-shield-alt"></i> AI Authenticated</p>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 15px; padding-top: 10px; border-top: 1px dashed #ccc; font-size: 0.8rem; color: #666;">
+                Auto-generated digital copy. Valid for official use.
+            </div>
+            <div style="position: absolute; bottom: 20px; right: 20px; opacity: 0.1; font-size: 4rem;">
+                <i class="fa ${icon}"></i>
+            </div>
+        </div>
+    `;
 }
