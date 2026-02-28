@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Profile Settings - SEVA-CONNECT Portal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link rel="stylesheet" href="homepage.css">
+    <link rel="stylesheet" href="profile-settings.css">
+</head>
+
+<body>
+    <header>
+        <div class="top-bar">
+            <h1 class="brand">
+                <img src="main_logo.png" alt="SEVA-CONNECT Logo">
+                SEVA-CONNECT
+            </h1>
+            <div class="account" id="accountBtn">
+                <i class="fa fa-user-circle"></i>
+            </div>
+        </div>
+    </header>
+
+    <div class="layout">
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <a href="homepage.html"><i class="fa fa-home"></i> Home</a>
+            <a href="departments.html"><i class="fa fa-building"></i> Departments</a>
+            <a href="public complaint.html"><i class="fa fa-paper-plane"></i> Submit Complaint</a>
+            <a href="track.html"><i class="fa fa-search"></i> Track</a>
+            <a href="application.html"><i class="fa fa-clipboard-list"></i> Apply for Services</a>
+            <a href="funds.html"><i class="fa fa-chart-line"></i> Monitor Funds</a>
+            <a href="store.html"><i class="fa fa-folder-open"></i> Store Document</a>
+            <a href="digilocker_request.html"><i class="fa fa-lock"></i> DigiLocker</a>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main>
+            <div class="profile-header">
+                <a href="settings.html" class="back-btn"><i class="fa fa-arrow-left"></i> Back to Settings</a>
+                <h2>Profile Details</h2>
+                <p>Manage your personal information and contact preferences.</p>
+            </div>
+
+            <div class="profile-container">
+                <!-- Avatar Section -->
+                <div class="profile-card avatar-section">
+                    <img src="https://ui-avatars.com/api/?name=John+Doe&background=5A1E7A&color=fff&size=128"
+                        alt="User Avatar" class="profile-avatar">
+                    <h3>John Doe</h3>
+                    <p class="user-role">Verified Citizen <i class="fa fa-check-circle" style="color: #4CAF50;"></i></p>
+                    <button class="btn-outline">Change Avatar</button>
+                </div>
+
+                <!-- Details Section -->
+                <div class="profile-card details-section">
+                    <div class="details-header">
+                        <h3>Personal Information</h3>
+                        <button class="btn-text" id="editBtn"><i class="fa fa-edit"></i> Edit</button>
+                    </div>
+
+                    <form id="profileDetailsForm" class="profile-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">First Name</label>
+                                <input type="text" id="firstName" value="John" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Last Name</label>
+                                <input type="text" id="lastName" value="Doe" readonly>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" value="john.doe@example.com" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Mobile Number</label>
+                                <input type="tel" id="phone" value="+91 9876543210" readonly>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="dob">Date of Birth</label>
+                                <input type="date" id="dob" value="1990-01-01" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label for="age">Age</label>
+                                <input type="number" id="age" value="36" readonly>
+                            </div>
+                        </div>
+
+                        <div class="form-actions" id="formActions" style="display: none;">
+                            <button type="button" class="btn-cancel" id="cancelBtn">Cancel</button>
+                            <button type="submit" class="btn-save">Save Changes</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <footer>
+        © 2026 SEVA-CONNECT
+    </footer>
+
+    <script>
+        document.getElementById("accountBtn").addEventListener("click", function () {
+            window.location.href = "settings.html";
+        });
+
+        const editBtn = document.getElementById('editBtn');
+        const cancelBtn = document.getElementById('cancelBtn');
+        const formActions = document.getElementById('formActions');
+        const inputs = document.querySelectorAll('.profile-form input:not(#age)'); // age shouldn't be editable
+        const profileForm = document.getElementById('profileDetailsForm');
+
+        function toggleEdit(isEditing) {
+            inputs.forEach(input => {
+                input.readOnly = !isEditing;
+                if (isEditing) {
+                    input.classList.add('editable');
+                } else {
+                    input.classList.remove('editable');
+                }
+            });
+            formActions.style.display = isEditing ? 'flex' : 'none';
+            editBtn.style.display = isEditing ? 'none' : 'block';
+        }
+
+        editBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            toggleEdit(true);
+        });
+
+        cancelBtn.addEventListener('click', () => {
+            toggleEdit(false);
+            // In a real app, this should reset values to their original state
+        });
+
+        profileForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Profile updated successfully!');
+            toggleEdit(false);
+        });
+    </script>
+</body>
+
+</html>

@@ -43,6 +43,28 @@ const domainsData = {
         { name: "NREGA Job Card", docs: ["Aadhaar", "Bank Passbook"] },
         { name: "EWS Certificate", docs: ["Income Cert", "Aadhaar"] },
         { name: "Trade License", docs: ["Aadhaar", "Shop Photos"] }
+    ],
+    "Electricity Department": [
+        { name: "New Connection (LT/HT)", docs: ["Property Ownership Proof", "Aadhaar", "Passport Size Photo"] },
+        { name: "Load Change", docs: ["Latest Electricity Bill", "Aadhaar", "Test Report from Licensed Contractor"] },
+        { name: "Name Transfer", docs: ["Sale Deed/Property Tax Receipt", "NOC from previous owner", "Aadhaar"] },
+        { name: "Tariff Change", docs: ["Trade License/Commercial Setup Proof", "Latest Electricity Bill", "Aadhaar"] }
+    ],
+    "Revenue Department": [
+        { name: "Certificates (Caste/Income/Domicile/EWS)", docs: ["Aadhaar", "Ration Card", "School Records"] },
+        { name: "Mutation (Dakhil Kharij)", docs: ["Registered Sale Deed", "Buyer/Seller Aadhaar", "Latest Tax Receipt"] },
+        { name: "Land Survey", docs: ["RoR/Pahani Copy", "Aadhaar", "Sketch of land"] },
+        { name: "Pattas", docs: ["Possession Certificate", "Aadhaar", "Voter ID"] }
+    ],
+    "Forest Department": [
+        { name: "Tree Cutting Permission", docs: ["Land Ownership Proof", "Photos of Tree", "Aadhaar"] },
+        { name: "Timber Transit Pass", docs: ["Tree Cutting Permission Copy", "Vehicle Details", "Aadhaar"] },
+        { name: "Wildlife Compensation", docs: ["Photos of Damage", "Village Accountant Report", "Bank Passbook"] },
+        { name: "Film Shooting / Research", docs: ["Synopsis of Project/Script", "ID Proof", "Company Registration"] }
+    ],
+    "Public Works Department (PWD)": [
+        { name: "Road Cutting Permission", docs: ["Plan Sketch", "Purpose Letter", "Aadhaar/Company ID"] },
+        { name: "Contractor Registration", docs: ["Financial Solidity Certificate", "Previous Experience Proof", "PAN Card", "GST Registration"] }
     ]
 };
 
